@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap");
+
+.hidden {
+  display: none;
+}
+
+img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
+  opacity: 80%;
+}
+
+span {
+  font-family: "Noto Serif KR", serif;
+}
+
+body {
+  margin-top: 50px;
+  text-align: center;
+  font-family: "Noto Serif KR", serif;
+}
