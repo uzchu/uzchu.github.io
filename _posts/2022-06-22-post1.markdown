@@ -34,17 +34,17 @@ category: github
 
 우선, 본인 깃허브 계정에 **닉네임.github.io** 형식으로 된 repository가 있어야 한다.
 
-![image](https://user-images.githubusercontent.com/58683097/175019433-430d3532-9502-4f56-9141-9083dc4c6b58.png){width=600px}
+![image](https://user-images.githubusercontent.com/58683097/175019433-430d3532-9502-4f56-9141-9083dc4c6b58.png){:width="50%"}
 
 그 다음엔 해당 깃헙을 로컬에 클론한다.
 
 1. github repository에서 copy 클릭 후 clone 코드 복사
 
-   ![image](https://user-images.githubusercontent.com/58683097/175021461-7aca08ee-f77a-4bc3-afdd-995c10224eee.png){width=600px}
+   ![image](https://user-images.githubusercontent.com/58683097/175021461-7aca08ee-f77a-4bc3-afdd-995c10224eee.png){:width="50%"}
 
 2. gitbash창에서 git clone 입력 후 shift+insert로 복사한 주소 붙여넣기
 
-   ![image](https://user-images.githubusercontent.com/58683097/175021708-4cc4c129-040f-4c66-9eea-19c9d4990508.png){width=600px}
+   ![image](https://user-images.githubusercontent.com/58683097/175021708-4cc4c129-040f-4c66-9eea-19c9d4990508.png){:width="50%"}
 
 ### 📍jekyll 테마 고르고 적용하기
 
@@ -52,15 +52,17 @@ category: github
 
 1. jekyll 테마 고르는 사이트는 여러개인데 나는 http://jekyllthemes.org/ 여기서 다운받았다. (전부 다 들어가서 구경하긴 함ㅎㅎ)
 
-   - [https://jekyllthemes.io](https://jekyllthemes.io/)
+   - [https://jekyllthemes.io/](https://jekyllthemes.io/)
    - [https://jekyllthemes.org/](https://jekyllthemes.org/)
    - [https://jekyll-themes.com/](https://jekyll-themes.com/)
 
-2. 맘에 드는 테마를 골랐다면 다운로드 눌러서 압축파일을 받아서 압축 해제해서 /닉네임.github.io 폴더에 넣으면 된다.
+2. 맘에 드는 테마를 골랐다면 다운로드 눌러서 압축파일을 받아서 압축 해제 후 로컬에 다운받은 **닉네임.github.io** 폴더에 넣으면 된다.
 
-   ![image](https://user-images.githubusercontent.com/58683097/175022945-41f99862-e084-4ecd-b24c-3b12b9256611.png){width=600px}
+   ![image](https://user-images.githubusercontent.com/58683097/175022945-41f99862-e084-4ecd-b24c-3b12b9256611.png){:width="50%"}
 
-   - homepage를 클릭하면 깃헙페이지가 나오는데 여기서 클론하거나 fork해서 써도 된다!
+   - Homepage를 클릭하면 깃헙페이지가 나오는데 여기서 클론하거나 fork해서 써도 된다!
+
+   ![image](https://user-images.githubusercontent.com/58683097/175049456-25a94073-7f52-46ca-bf1a-03b87cd97db9.png){:width="50%"}
 
 그 다음 인터넷에서 본대로 아래와 같이 치고 푸시하면 될 줄 알았는데...git bash가 해당 명령어를 못알아 먹는다..
 
@@ -69,13 +71,13 @@ $ gem install bundler
 $ bundle install
 ```
 
-![image](http://file3.instiz.net/data/file3/2018/02/11/4/3/9/43963b4ffa3e24256ae7df6fea3dd6b9.jpg){width=300px}
+![image](http://file3.instiz.net/data/file3/2018/02/11/4/3/9/43963b4ffa3e24256ae7df6fea3dd6b9.jpg){:width="30%"}
 
 ...찾아보니 jekyll을 사용하려면 **루비를 설치해야 한다**고 한다..!
 
 1. [루비 다운로드 사이트](https://rubyinstaller.org/downloads/)에 들어가서 Window Ruby+Devkit를 설치해줬다.
 
-   ![image](https://user-images.githubusercontent.com/58683097/175025925-49c47e48-f333-4466-87bd-c011d089fcf0.png){width=600px}
+   ![image](https://user-images.githubusercontent.com/58683097/175025925-49c47e48-f333-4466-87bd-c011d089fcf0.png){:width="50%"}
 
 - 구냥 젤 최신판보다 하나 낮은걸로 다운받았다..
 
@@ -87,16 +89,16 @@ bundle install
 ```
 
 사진처럼 에러 안나면 성공!!
-![image](https://user-images.githubusercontent.com/58683097/175041119-9184213b-13e1-46bc-8664-a8eaadd8cc13.png){width=600px}
+![image](https://user-images.githubusercontent.com/58683097/175041119-9184213b-13e1-46bc-8664-a8eaadd8cc13.png){:width="50%"}
 
-![image](https://mblogthumb-phinf.pstatic.net/20141211_41/eunsam21_1418282855122qP5iy_JPEG/NaverBlog_20141123_235620_08.jpg){width=300px}
+![image](https://mblogthumb-phinf.pstatic.net/20141211_41/eunsam21_1418282855122qP5iy_JPEG/NaverBlog_20141123_235620_08.jpg){:width="30%"}
 
 그 다음엔 \_config.yml 파일 열어서 내용 수정해주세용
-![image](https://user-images.githubusercontent.com/58683097/175041409-684b4991-b3d2-412e-ac81-70e2f05d427d.png){width=600px}
+![image](https://user-images.githubusercontent.com/58683097/175041409-684b4991-b3d2-412e-ac81-70e2f05d427d.png){:width="50%"}
 
 마지막으로 gitbash에서 수정된 내용을 다 커밋찍고 push해주시면 됩니다!
 
 **닉네임.github.io**를 주소창에 쳐서 들어가보면 적용된 내용을 확인하실 수 있을거에용~~~!!
-![image](https://user-images.githubusercontent.com/58683097/175041802-06050f57-223a-450c-98ef-42437e7bcc31.png){width=600px}
+![image](https://user-images.githubusercontent.com/58683097/175041802-06050f57-223a-450c-98ef-42437e7bcc31.png){:width="50%"}
 
 ~~근데 쓰다보니.. 제 블로그 테마엔 댓글기능이 없네용... 댓글기능 추가를 하던가 있는 테마로 바꾸던가 해야겠어요..~~
