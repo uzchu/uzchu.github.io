@@ -1,0 +1,77 @@
+---
+layout: post
+title: Github 블로그 커밋 전 로컬에서 미리보기
+date: 2022-06-23 20:42:00 +0900
+category: github
+---
+
+# Github 블로그 커밋 전 로컬에서 미리보기
+
+> 원격에 올리지 않고 로컬에서 깃블로그 화면 미리보는 방법
+
+깃 블로그를 만들었는데 이게 커밋 찍어서 원격에 올려야 결과물 반영된 걸 확인할 수 있어서 수정때마다 커밋을 찍게 돼서 불편했다.
+
+의미 없는 커밋이 잔뜩 찍히는 것도 싫기도했고 행간이라던가 이미지 사이즈 등 작성결과물을 중간중간 확인할 수 없어서 포스팅 작성에 어려움이 있었다.
+
+그래서 찾아보니 jekyll을 실행하면 로컬호스트로 화면을 확인할 수 있다고 한다!
+
+로컬에서 jekyll을 실행하려면 ruby를 깔아야한다고하는데 나는 어쩌다보니 ruby는 이미 깔려있는 상태였다ㅎㅎ(개이득)
+
+암튼 로컬에서 확인하는 방법과 그 과정에서 발생되는 오류, 오류 해결법까지 정리해보려 한다.
+
+이번엔 아래 포스트들을 주로 참고했다.
+
+- [GitHub 블로그 만들기(2) - ruby 사용해서 개발환경 구축하기](https://present4n6.tistory.com/7?category=904222)
+- [Bundler::GemNotFound 에러 해결법](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=cyydo96&logNo=221588642260)
+
+## 📍install jekyll
+
+git bash 창을 켜고 닉네임.github.io 폴더로 들어가서 아래와 같이 쳐준다.
+
+```
+$ gem install jekyll
+```
+
+이렇게 나오면 성공!
+![image](https://user-images.githubusercontent.com/58683097/175299035-1b5fea35-9027-4b32-baf1-fa66f1673acf.png)
+
+## 📍bundle exec jekyll serve
+
+그 다음 jekyll을 실행시키기 위한 명령어를 입력해준다
+
+```
+$ bundle exec jekyll serve
+```
+
+근데 이런식으로 오류가 났다
+![image](https://user-images.githubusercontent.com/58683097/175299053-12b11d11-9a57-46cc-8c6a-5dacb88d18ab.png)
+
+## 📍(Bundler::GemNotFound) 오류 해결
+
+인터넷 찾아보니 아래와 같이 쳐주면 오류가 해결된다고 한다.
+
+```
+bundler
+```
+
+오... 뭔가 잔뜩 실행됨
+
+![image](https://user-images.githubusercontent.com/58683097/175299080-cb0dc574-c591-483b-b535-72d32744ac26.png)
+
+완료된 후 다시 jekyll 실행코드 입력
+
+```
+$ bundle exec jekyll serve
+```
+
+![image](https://user-images.githubusercontent.com/58683097/175300851-0465a170-ab37-436a-a35c-a2b173390a0b.png)
+
+드디어 로컬호스트 주소(http://127.0.0.1:4000//)가 뜬다!
+
+## 📍http://127.0.0.1:4000// 주소 입력
+
+입력해서 들어가니 아주 확인이 잘 된다 ^^
+
+![image](https://user-images.githubusercontent.com/58683097/175299323-beac6edd-1cd1-4d42-be5d-cdaa97b90c0d.png)
+
+변경된 파일을 저장하고 페이지를 새로고침하면 수정 반영된 결과물을 바로 확인할 수 있어서 넘 편해졌다~~
