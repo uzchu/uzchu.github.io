@@ -178,6 +178,10 @@ a.nav-item:hover {
   color: #333;
 }
 
+.post-content {
+  margin: 0 20%;
+}
+
 #contact-list li .fa,
 article .share .btn {
   -o-transition: color 0.2s ease-out, background 1s ease-in;
