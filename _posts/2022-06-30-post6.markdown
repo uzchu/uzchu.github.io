@@ -1,0 +1,141 @@
+---
+layout: post
+title: namedtuple이란?
+date: 2022-06-30 12:30:00 +0900
+category: python
+---
+
+# namedtuple이란?
+
+> namedtuple에 대해 알아보자
+
+지난번에 itertuples() 사용했을 때 결과물 반환형태가 공식문서에 **'namedtuple'**이라고 나와있었다.
+
+처음 본 용어라 공부하면서 찾아본 내용을 정리해보았다.
+
+그리고 정리하면서 느낀건데 역시 **공식문서**가 짱인것 같다👍
+
+<br>
+
+## 📍Tuple?
+
+우선 Tuple 자료구조는 '()' 형태로 사용한다. (리스트는 '[]')
+
+불변한 순서가 있는 객체로, 생성되면 값을 변경할 수 없다는 특징이 있다.
+
+튜플은 튜플에 있는 요소를 접근할 때 인덱스 번호로 접근해야한다는 단점이 있다.
+
+이러한 단점을 해소할 수 있는게 오늘 정리할 namedtuple이다.
+
+## 📍Namedtuple?
+
+namedtuple은 collections 모듈 아래에 존재하고 있다.
+
+객체에 인스턴스를 생성하듯이 튜플을 생성하여 각 원소에 이름으로 접근이 가능한 튜플을 의미한다.
+
+각 튜플 값에 이름으로 접근할 수 있기때문에 일반 튜플보다 직관적으로 접근할 수 있다는 장점이 있다.
+
+지난번에 속도개선을 위해 itertuples를 사용했는데, 일반적으로 튜플형식이 리스트보다 메모리 효율이 좋다고 한다!!
+
+### ✔️ Namedtuple 사용방법은?
+
+nametuple 선언방법은 3가지가 존재하는것 같다.
+
+- 리스트형태
+
+```
+Point = namedtuple('Point',['x','y']) # x,y는 filed_name
+```
+
+- 띄어쓰기 구분
+
+```
+Point = namedtuple('Point','x y')
+```
+
+- 콤마 구분
+
+```
+Point = namedtuple('Point','x,y')
+```
+
+<br>
+
+여기에 추가적으로 옵션이 존재한다.
+
+#### ✅ rename 옵션
+
+rename옵션은 튜플 속성명이 중복으로 입력되거나, 예약어로 입력될 경우 자동으로 이름을 변경해주는 옵션이다!
+
+```
+Point = namedtuple('Point','x y x abc def', rename=True)
+```
+
+```
+>>>> p1 = Point(2,3,4,5,6)
+>>>> print(p1)
+Point(x=2, y=3, _1=4, abc=5, _2=6) # x는 중복, def는 예약어라서 자동으로 변환됨
+```
+
+#### ✅ default 옵션
+
+default옵션은 namedtuple 생성 시 튜플속성에 대한 기본값을 설정하는 옵션인듯
+
+```
+Point = namedtuple('Point',['x','y'], default=0)
+>>>> p1 = Point(2)
+>>>> print(p1)
+Point(x=2, y=0)
+```
+
+### ✔️ Namedtuple 메서드 종류
+
+- \_make : 새로운 객체 생성할 때 사용
+
+```
+>>>> t = [11,22]
+>>>> Point.make(t)
+Point(x=11,y=22)
+```
+
+- \_asdict() : dictionary 형태로 변환할 때 사용 (OrderedDict 반환)
+
+```
+>>>> t = [11,22]
+>>>> Point.make(t)
+Point(x=11,y=22)
+```
+
+- \_replace() : 값 변경할 때 사용 (튜플은 값을 변경할 수 없기 때문에, 변경된 값이 반영된 새로운 객체 반환)
+
+```
+>>> p1 = Point(x=11, y=22)
+>>> p1._replace(x=33)
+Point(x=33, y=22)
+
+```
+
+- \_fields() : 튜플 속성명 출력 시 사용
+
+```
+>>>>  p1._fields
+('x', 'y')
+```
+
+- \_field_defaults() : 튜플 기본값 출력 시 사용
+
+```
+Point = namedtuple('Point',['x','y'], default=0)
+>>>> print(p1._field_defaults)
+{'x':0, 'y':0}
+```
+
+<br>
+
+### 👀 참고
+
+> [파이썬 공식문서](https://docs.python.org/ko/3.7/library/collections.html#collections.namedtuple)
+>
+> [Python Namedtuple Example 및 사용법](https://zzsza.github.io/development/2020/07/05/python-namedtuple/)
+>
+> [TIL10. Python : NamedTuple 이란?](https://velog.io/@jewon119/Python-%EC%8B%AC%ED%99%94-NamedTuple)
