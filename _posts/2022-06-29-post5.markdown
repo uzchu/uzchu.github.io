@@ -1,0 +1,117 @@
+---
+layout: post
+title: Pandas에서 Dataframe 한 줄씩 처리하기
+date: 2022-06-29 00:26:00 +0900
+category: pandas
+---
+
+# Pandas에서 Dataframe 한 줄씩 처리하기
+
+> Pandas에서 반복문을 이용해 Dataframe 한 줄씩 처리하기
+
+용량이 큰 데이터프레임에서 한 줄씩 처리하는데 컬럼별로 이것저것 조건줘야하는 일이 생겼다.
+
+일단 기존에 알고있던 방식대로 df.index를 for문 돌리면서 loc를 이용해 수행하는데 너무 느려서(...) 좀 더 빠른 방식이 없나 찾아보다가 알게된 것들을 정리해보았다.
+
+<br>
+
+## 📍pd.iterrows()
+
+~~얜 느리다고 해서 제대로 공부안함..~~\
+데이터프레임 접근방식하고 동일하게 접근 가능한 것 같다.\
+약간 데이터프레임을 행방향으로 잘라서 주는 느낌...
+
+```
+result = []
+for row in df.iterrows():
+    value = row['col']
+    result.append(value)
+```
+
+## 📍pd.loc() / pd.iloc()
+
+loc/iloc가 pd.iterrows()보다 2.5배정도 빠르다고 한당
+
+loc는 라벨명으로 iloc는 위치인덱스(숫자)로 접근..
+
+```
+result = []
+for idx in df.index():
+    value = df.loc[idx,'col']
+    result.append(value)
+```
+
+## 📍pd.at() / pd.iat()
+
+pd.get_value()/pd.set_value() 이게 loc/ iloc보다 빠르다고해서 찾아보다가 처음 알게됐다.
+
+~~pd.get_value()/pd.set_value()는 판다스 0.21버전에서 없어졌다고 한다.~~
+
+at, iat은 하나의 값을 가져올때 사용하는 것 같다.
+
+iterrows보단 4배정도 빠르다고 함
+
+```
+result = []
+for idx in df.index():
+    value = df.at[idx,'col']
+    result.append(value)
+```
+
+### ✔️ pd.at() vs pd.loc() 둘이 뭔차이?
+
+공식문서에 따르면 아래와 같이 정의되어 있다.
+
+- pd.at() : Access a single value for a row/column label pair.
+- pd.loc() : Access a group of rows and columns by label(s) or a boolean array.
+
+at은 하나의 값만, loc는 여러개 가능. 그래서 at은 아래처럼 슬라이싱을 넣으면 오류가 난다
+
+```
+value = df.at[1:20,'col'] #에러남
+value = df.loc[1:20,'col'] #에러안남
+```
+
+## 📍pd.itertuples()
+
+대망의 itertuples() iterrows보다 8배이상 빠르다고한다.
+
+나도 얘 활용해서 문제 해결했다
+
+10개에 20초 걸리던게 10개에 2초 정도로 줄었다.. 그저 감동..
+
+이것도 iterrows 처럼 한줄씩 불러서 다루는건데 결과물이 약간 dict느낌?
+
+그래도 dataframe 다루는거랑 거의 비슷하다.
+
+```
+result = []
+for row in df.itertuples():
+    value = row.ID
+    result.append(value)
+```
+
+### ✔️ col 이름을 지정해서 주고 싶을 때는?
+
+iterrows와 다르게 itertuples는 row['col'] 형식이 먹히지 않는다.
+
+row.ID 이런식으로 직접 적을때는 상관이 없지만 여러 컬럼조건을 줘야해서
+외부에서 컬럼명을 변수 설정하고 row에서 처리하고 싶을 때가 있다.
+
+그럴땐 getattr(row,col) 이런식으로 써서 값을 얻으면 된다.
+
+```
+result = []
+col_name = 'ID'
+for row in df.itertuples():
+    value = getattr(row,col_name)
+    result.append(value)
+```
+
+따봉 itertuples()야 고마워~~~
+
+- itertuples의 결과물이 dict같다고했는데 공식문서 찾아보니 namedtuple형식이란다.
+  namedtuple에 대해선 내일 알아봐야지...
+
+> 참고
+> [Pandas Dataframe의 다양한 iteration 방법 비교](https://inmoonlight.github.io/2021/02/04/Pandas-Dataframe-iterations/) > [판다스 공식문서](https://pandas.pydata.org/docs/reference/frame.html)
