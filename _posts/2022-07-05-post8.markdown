@@ -1,0 +1,56 @@
+---
+layout: post
+title: Github 블로그 404 error 해결법 (원격에서 오류날 때)
+date: 2022-07-05 20:51:00 +0900
+category: github
+---
+
+# Gitblog 404 error 해결법
+
+> 로컬에서 잘되는데 원격에서 안될 때 + 포스팅 1개만 오류가 날 때
+
+후.. 너무 어이가 없지만 혹시 필요한 사람이 있을까봐 작성하는 포스팅☆
+
+로컬에서 bundle exec jekyll serve 해서 http://127.0.0.1:4000/ 주소로 들어가면 잘만보이는 포스팅이 깃블로그에만 올리면 자꾸 404 에러가 떴다.
+
+구글링했더니 뭐 브런치를 새로 생성해야한다더라, index.html 파일이 있어야 한다더라.. 다 시도해봤지만 실패..
+
+내 경우.. 원인은 따로 있었다.!
+
+## 📍문제원인
+
+gitblog post를 작성할 때 보면 아래 이미지와 같이 최상단에 layout/title/date/category 작성하는 칸이 있다.
+
+![image](https://user-images.githubusercontent.com/58683097/177323932-189c63d8-3f3d-4354-bf3a-85f2247945c8.png)
+
+category에 적은 내용이 카테고리 tag와
+
+![image](https://user-images.githubusercontent.com/58683097/177322358-6cc3d3fc-681a-4d6e-a38f-ac82811296e9.png)
+
+<br>
+
+**도메인 주소**에 쓰인다.
+
+![image](https://user-images.githubusercontent.com/58683097/177322419-02457fbc-ca15-4627-b5d7-46eef9d8b5e1.png)
+
+### 이때 주의해야할 점! 본인 git repository에 category 내용과 동일한 이름의 폴더가 있으면 안됨!
+
+아예 상관없는 내용이 들어있다면 에러가 안날수도 있을것 같은데(확실하지 않음), 나는 **web이라는 이름의 repository가 있었고, 그안에 index.html 파일도 있었다.**
+
+<br>
+
+**uzchu.github.io/web**을 치면 해당 폴더로 들어가져서 새롭게 작성한 **uzchu.github.io/web/2022/07/04/pos57.html** 파일이 에러가 났던 것이다.
+
+## 📍오류해결
+
+기존 web으로 되어있는 repository명을 web_sangco로 변경해주었더니 오류없이 잘 실행된다.^^
+
+휴 몇시간을 헤맸는지...
+
+그래도 에러를 해결해서 기분이 좋다.^^
+
+<br>
+
+![image](https://user-images.githubusercontent.com/58683097/177323449-a28fab85-50c5-47f6-aeca-c863382b5d59.png){: width="50%"}
+
+...~~이제 공부를 하자~~
