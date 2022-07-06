@@ -1,0 +1,68 @@
+---
+layout: post
+title: Series.str.contains() 특정 문자열 파악하기
+date: 2022-07-06 22:40:00 +0900
+category: python
+---
+
+# contains() 파이썬으로 특정 문자열 포함여부 파악하기
+
+> 판다스 시리즈 특정 문자열 포함여부 파악하기
+
+오늘은 쓸때마다 쓰는 방법이 매번 헷갈리는 contains를 정리해보려한다.
+
+df.col.apply(lambda x : x.contains('단어')) 이런식으로 썼다가 맨날 에러남...
+
+시리즈(ex, df.col) 뒤에다가 str.contains('단어') 이런식으로 쓰면 된다.
+
+## 📍Series.str.contains()
+
+Series.str.contains(pat, case=True, flags=0, na=nan, regex=True)
+
+판다스 공식문서에 가면 이렇게 쓰여있다.
+
+인덱스나 시리즈에 특정 패턴(단어)나 정규식이 포함되어 있는지 여부를 파악해주는 테스트다.
+
+contains 사용시 필요한 각각의 파라미터에 대해 알아보자.
+
+### ✔️ contains의 parmeter 종류
+
+- pat : str
+
+문자열이나 정규식 형태로 써주면 된다.
+
+- case : bool, defalut True
+
+디폴트값은 True이며 True일 경우 대소문자를 구분한다.
+
+- flags : int, default 0
+
+re모듈에 전달할 flag란다. 예시로 re.IGNORECASE.를 들어둔걸보아 re모듈에 이쓴ㄴ 컴파일 옵션을 불러오는 기능 같다.
+
+- na : scalar, optional
+
+na값 채우는 기능이다. na=False로 되어있으면 na값이 False로 바뀐다.
+
+- regex : bool, default True
+
+만약 True면 정규식이라고 가정하고 False면 입력 문자열 그대로 처리한다
+
+### ✔️ contains의 Return
+
+반환값은 boolean형태로 해당 문자열을 포함하고 있으면 True 없으면 False를 반환한다.
+
+### ✔️ 나의 contains 사용 예시
+
+나는 특정 컬럼에서 각각의 값(행기준)이 해당 문자를 포함하고 있는지 확인하기위해 주로 사용한다.
+
+예를 들어 아래와 같은 주소 컬럼에서 원하는 지역정보만 추출할 때 사용한다.
+
+![image](https://user-images.githubusercontent.com/58683097/177582124-c2a7d09e-b1e3-4253-9fa5-8766c1b6bb5f.png)
+
+`df.col.str.contains('지역명')`이런식으로 치면 아래처럼 나온다.
+
+![image](https://user-images.githubusercontent.com/58683097/177582258-280cf64f-a3ca-45b4-b1d0-909c748a31ce.png)
+
+최종적으로 아래와 같이 필터링을 할 수 있다^^
+
+![image](https://user-images.githubusercontent.com/58683097/177582606-9026f46a-165d-49d5-b24c-b5713ba29d24.png)
