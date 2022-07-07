@@ -2,7 +2,7 @@
 layout: post
 title: Pandas에서 Dataframe 한 줄씩 처리하기
 date: 2022-06-29 00:26:00 +0900
-category: pandas
+category: python
 ---
 
 # Pandas에서 Dataframe 한 줄씩 처리하기
