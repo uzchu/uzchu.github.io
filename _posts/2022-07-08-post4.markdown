@@ -1,0 +1,70 @@
+---
+layout: post
+title: SQL 문법
+date: 2022-07-08 20:01:00 +0900
+category: 정보처리기사
+---
+
+## 📍SQL 문법
+
+- CREATE (테이블 생성)
+
+  - **CREATE** TABLE student (
+    칼럼명 타입 조건(not null 등),
+    칼럼명 타입 조건(not null 등),
+    칼럼명 타입 조건(not null 등),
+    PRIMARY KEY ~~
+    );
+
+- INSERT (삽입)
+
+  - **INSERT INTO** student values (테이블에 맞는 데이터 양식);
+
+- UPDATE (수정)
+
+  - **UPDATE** 테이블명 **SET** 컬럼=값 WHERE 조건;
+
+- DELETE (삭제)
+
+  - **DELETE** FROM 테이블 WHERE 조건;
+
+- SELECT (조회)
+
+  - **SELECT** \* FROM student;
+  - **SELECT** age, name FROM student;
+
+- SELECT 문법 순서
+
+  1. SELECT
+  2. FROM
+  3. WHERE
+  4. GROUP BY
+  5. HAVING
+  6. ORDER BY
+
+  - 실행순서는 2>3>4>5>1>6
+
+- WHERE (조건)
+
+  - SELECT \* FROM student **WHERE** id=1;
+  - SELECT \* FROM student **WHERE** name='유%'; (like 조건)
+
+- LIMIT (조회 결과 행수의 제한)
+
+  - SELECT \* FROME student **limit** 1;
+
+- GROUP BY (그룹화)
+
+  - SELECT age FROM student GROUP BY age;
+
+- ORDER BY (정렬)
+
+  - SELECT age FROM student ORDER BY DESC; (오름차순은 ASC)
+
+- DISTINCT (중복행 제거)
+
+  - SELECT DISTINCT name FROM student;
+
+- ALIAS (별칭)
+
+  - SELECT age **'나이'** FROM student WHERE id = 3;
