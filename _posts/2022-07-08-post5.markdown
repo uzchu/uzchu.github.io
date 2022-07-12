@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 정보처리기사 실기 2회 - 오답노트
+title: python >> 기호 (쉬프트연산자)
 date: 2022-07-08 20:01:00 +0900
-category: 정보처리기사
+category: EIP
 ---
 
 ## 📍python >> 기호 (쉬프트연산자)

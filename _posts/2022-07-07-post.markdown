@@ -2,7 +2,7 @@
 layout: post
 title: 혼공학습단 - 1주차
 date: 2022-07-07 20:40:00 +0900
-category: 혼공학습단
+category: ML
 ---
 
 # [혼공학습단] 혼자 공부하는 머신러닝+딥러닝 1주차
